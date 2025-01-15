@@ -1,27 +1,21 @@
 import pandas as pd
 
-pd_radeep = pd.read_csv('input/RADeepRegistry_DataDictionary_2024-11-11.csv')
-
-# convert csv file into xsxl file
-radeep_xlsx = pd_radeep.to_excel('output/radeep_data_dictionary.xlsx', index=False)
-
-pd_radeep = pd.read_excel('output/radeep_data_dictionary.xlsx')
+pd_radeep = pd.read_csv('input/RADeepRegistry_DataDictionary_2025-01-15.csv')
 
 # get the number of rows and columns
 print(pd_radeep.shape)
 
-# delete rows with column Variable / Field Name hpo_row_2, hpo_row_3, hpo_row_4, hpo_row_5
-pd_radeep = pd_radeep[pd_radeep['Variable / Field Name'] != 'hpo_row_2']
-pd_radeep = pd_radeep[pd_radeep['Variable / Field Name'] != 'hpo_row_3']
-pd_radeep = pd_radeep[pd_radeep['Variable / Field Name'] != 'hpo_row_4']
-pd_radeep = pd_radeep[pd_radeep['Variable / Field Name'] != 'hpo_row_5']
-pd_radeep = pd_radeep[pd_radeep['Variable / Field Name'] != 'new_novel_row2']
-pd_radeep = pd_radeep[pd_radeep['Variable / Field Name'] != 'new_novel_row3']
-pd_radeep = pd_radeep[pd_radeep['Variable / Field Name'] != 'new_novel_row4']
-pd_radeep = pd_radeep[pd_radeep['Variable / Field Name'] != 'new_novel_row5']
+# Add row description with column Variable / Field Name hpo_row_2, hpo_row_3, hpo_row_4, hpo_row_5
 
-# find all the rows from pd_radeep where column Text Validation Type OR Show Slider Number is date_dmy and for this rows, subsitute the value of column Field Note with dd-mm-yyyy
-pd_radeep.loc[pd_radeep['Text Validation Type OR Show Slider Number'] == 'date_dmy', 'Field Note'] = 'dd-mm-yyyy'
+pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'hpo_row_2', 'Field Label'] = 'Add new row'
+pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'hpo_row_3', 'Field Label'] = 'Add new row'
+pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'hpo_row_4', 'Field Label'] = 'Add new row'
+pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'hpo_row_5', 'Field Label'] = 'Add new row'
+pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'new_novel_row2', 'Field Label'] = 'Add new row'
+pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'new_novel_row3', 'Field Label'] = 'Add new row'
+pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'new_novel_row4', 'Field Label'] = 'Add new row'
+pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'new_novel_row5', 'Field Label'] = 'Add new row'
+
 
 # find row with column Variable / Field Name = age and substitute value of column Field Label for 'Calculated age of the patient'
 pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'age', 'Field Label'] = 'Calculated age of the patient'
@@ -52,11 +46,13 @@ pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'var_allele2_r4', 'Field Lab
 pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'var_allele2_r5', 'Field Label'] = 'Enter the variant allele 2'
 
 # years
+'''
 pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'year_immigration', 'Text Validation Max'] = '2024'
 pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'splenectomy_year', 'Text Validation Max'] = '2024'
 pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'transfusion_year', 'Text Validation Max'] = '2024'
 pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'transplant_year', 'Text Validation Max'] = '2024'
 pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'cholecystectomy_date', 'Text Validation Max'] = '2024'
+'''
 
 pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'timestamp', 'Field Note'] = 'dd-mm-yyyy'
 
@@ -101,27 +97,22 @@ pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'ongoing_vhd_2', 'Field Labe
 pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'ongoing_vhd_3', 'Field Label'] = 'Ongoing visual and hearing disorder 3'
 pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'ongoing_vhd_4', 'Field Label'] = 'Ongoing visual and hearing disorder 4'
 
-# delete rows 2 to 16
-pd_radeep = pd_radeep[pd_radeep['Variable / Field Name'] != 'add_acute_scd_row_2']
-pd_radeep = pd_radeep[pd_radeep['Variable / Field Name'] != 'add_acute_scd_row_3']
-pd_radeep = pd_radeep[pd_radeep['Variable / Field Name'] != 'add_acute_scd_row_4']
-pd_radeep = pd_radeep[pd_radeep['Variable / Field Name'] != 'add_acute_scd_row_5']
-pd_radeep = pd_radeep[pd_radeep['Variable / Field Name'] != 'add_acute_scd_row_6']
-pd_radeep = pd_radeep[pd_radeep['Variable / Field Name'] != 'add_acute_scd_row_7']
-pd_radeep = pd_radeep[pd_radeep['Variable / Field Name'] != 'add_acute_scd_row_8']
-pd_radeep = pd_radeep[pd_radeep['Variable / Field Name'] != 'add_acute_scd_row_9']
-pd_radeep = pd_radeep[pd_radeep['Variable / Field Name'] != 'add_acute_scd_row_10']
-pd_radeep = pd_radeep[pd_radeep['Variable / Field Name'] != 'add_acute_scd_row_11']
-pd_radeep = pd_radeep[pd_radeep['Variable / Field Name'] != 'add_acute_scd_row_12']
-pd_radeep = pd_radeep[pd_radeep['Variable / Field Name'] != 'add_acute_scd_row_13']
-pd_radeep = pd_radeep[pd_radeep['Variable / Field Name'] != 'add_acute_scd_row_14']
-pd_radeep = pd_radeep[pd_radeep['Variable / Field Name'] != 'add_acute_scd_row_15']
-pd_radeep = pd_radeep[pd_radeep['Variable / Field Name'] != 'add_acute_scd_row_16']
+pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'add_acute_scd_row_2', 'Field Label'] = 'Add new row'
+pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'add_acute_scd_row_3', 'Field Label'] = 'Add new row'
+pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'add_acute_scd_row_4', 'Field Label'] = 'Add new row'
+pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'add_acute_scd_row_5', 'Field Label'] = 'Add new row'
+pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'add_acute_scd_row_6', 'Field Label'] = 'Add new row'
+pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'add_acute_scd_row_7', 'Field Label'] = 'Add new row'
+pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'add_acute_scd_row_8', 'Field Label'] = 'Add new row'
+pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'add_acute_scd_row_9', 'Field Label'] = 'Add new row'
+pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'add_acute_scd_row_10', 'Field Label'] = 'Add new row'
+pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'add_acute_scd_row_11', 'Field Label'] = 'Add new row'
+pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'add_acute_scd_row_12', 'Field Label'] = 'Add new row'
+pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'add_acute_scd_row_13', 'Field Label'] = 'Add new row'
+pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'add_acute_scd_row_14', 'Field Label'] = 'Add new row'
+pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'add_acute_scd_row_15', 'Field Label'] = 'Add new row'
+pd_radeep.loc[pd_radeep['Variable / Field Name'] == 'add_acute_scd_row_16', 'Field Label'] = 'Add new row'
 
 
-# get first 19 rows
-pd_radeep_head = pd_radeep.head(620)
-print(pd_radeep_head)
-
-# store the first 19 rows in a new excel file
-pd_radeep_head.to_excel('output/radeep_data_dictionary_head.xlsx', index=False)
+# store the changes in a new csv file
+pd_radeep.to_csv('output/radeep_erdri.csv', index=False)
